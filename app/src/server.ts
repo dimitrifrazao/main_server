@@ -12,7 +12,13 @@ const rootDir = path.resolve(__dirname, "../../");
 const appDir = path.resolve(__dirname, "../");
 
 app.get("/", (req, res) => {
-  res.send({ test: "works" });
+  const remotePort = req.connection.remotePort;
+  if (remotePort === HTTP_PORT) {
+    console.log("redirecting to https");
+    res.redirect("https://44.218.136.154");
+  } else {
+    res.send({ test: "works" });
+  }
 });
 
 // https
