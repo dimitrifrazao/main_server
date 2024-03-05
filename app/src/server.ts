@@ -2,22 +2,16 @@ import express, { Request, Response } from "express";
 import cors from "cors";
 import { readFileSync } from "fs";
 import path from "path";
-import http from "http";
 import https from "https";
 
 const app: express.Application = express();
 app.use(cors());
 
-var serv = new http.Server(app);
-const PORT = process.env.PORT || 8080;
-serv.listen(PORT);
-console.log("http server listening on port " + PORT);
-
 const rootDir = path.resolve(__dirname, "../../");
 const appDir = path.resolve(__dirname, "../");
 
 app.get("/", (req, res) => {
-  res.redirect("http://44.218.136.154:5000/");
+  res.send({ test: "works" });
 });
 
 // https
@@ -32,11 +26,11 @@ const cred = {
 
 app.get("/wordle", (req, res) => {
   // Redirect to wordle
-  res.redirect("http://44.218.136.154:5000/");
+  res.redirect("https://44.218.136.154:5000/");
 });
 app.get("/iogame", (req, res) => {
   // Redirect to wordle
-  res.redirect("http://44.218.136.154:3000/");
+  res.redirect("https://44.218.136.154:3000/");
 });
 
 const HTTPS_PORT = 8443;
