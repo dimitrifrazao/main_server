@@ -2,7 +2,8 @@
 .DS_Store
 nohup
 nohup.out
-app/build
+/app/build
+/ssl/
 
 # Logs
 logs

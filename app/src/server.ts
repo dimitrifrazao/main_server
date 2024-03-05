@@ -3,6 +3,7 @@ import cors from "cors";
 import { readFileSync } from "fs";
 import path from "path";
 import https from "https";
+import http from "http";
 
 const app: express.Application = express();
 app.use(cors());
@@ -15,8 +16,8 @@ app.get("/", (req, res) => {
 });
 
 // https
-var keyPath = path.join(rootDir + "/private.key");
-var certPath = path.join(rootDir + "/certificate.crt");
+var keyPath = path.join(rootDir + "/ssl/private.key");
+var certPath = path.join(rootDir + "/ssl/certificate.crt");
 const key = readFileSync(keyPath);
 const cert = readFileSync(certPath);
 const cred = {
@@ -37,3 +38,8 @@ const HTTPS_PORT = 8443;
 const httpsServer = https.createServer(cred, app);
 httpsServer.listen(HTTPS_PORT);
 console.log("https server listening on port " + HTTPS_PORT);
+
+const HTTP_PORT = 8080;
+const httpServer = http.createServer(app);
+httpServer.listen(HTTP_PORT);
+console.log("http server listening on port " + HTTP_PORT);
