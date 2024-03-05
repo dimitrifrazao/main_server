@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
 });
 
 // https
-var keyPath = path.join(rootDir + "/F63369EE89B8762C73F6D5370722D843.txt");
+var keyPath = path.join(rootDir + "/FD1670CBC30720C3DA3C64F05E424289.txt");
 const file = readFileSync(keyPath);
 app.get("/.well-known/pki-validation/", (req, res) => {
   res.sendFile(keyPath);
