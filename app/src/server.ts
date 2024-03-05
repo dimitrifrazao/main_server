@@ -21,6 +21,6 @@ app.get("/.well-known/pki-validation/", (req, res) => {
   res.sendFile(keyPath);
 });
 
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 8080;
 serv.listen(PORT);
 console.log("Server listening on port " + PORT);
